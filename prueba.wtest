@@ -1,3 +1,29 @@
-test "d" {
-  assert.equals(1, 1)
+import profesionales.*
+import universidad.*
+import empresa.*
+
+//declaracion de objetos
+describe "test 1" {
+  const sanMartin = new Universidad(provincia = "Buenos Aires" , honorarios = 3500)
+  const rosario = new Universidad(provincia = "Santa fe" , honorarios = 2800)
+  const corrientes = new Universidad(provincia = "Corrientes" , honorarios = 4200)
+  const hurlingham = new Universidad(provincia = "Buenos Aires" , honorarios = 8800)
+
+  const juana = new Vinculados(universidad = rosario)
+  const melina = new AsociadosDelLitoral(universidad = corrientes)
+  const rocio = new Libres(universidad = hurlingham , honorarios = 500)
+  const luciana = new Libres(universidad = rosario , honorarios = 3200)
+
+  const empresaX = new Empresa(honorarioReferencia = 3500 , profesionales = 
+  #{juana , melina , rocio , luciana})
+
+
+test "etapa 1" {
+    rocio.agregarProvincia("Santa fe")
+    rocio.agregarProvincia("Cordoba")
+    rocio.agregarProvincia("Buenos Aires")
+    luciana.agregarProvincia("Santa fe")
+    luciana.agregarProvincia("Entre rios")
+    assert.equals(#{rocio}, empresaX.profesionalesCaros())
+  }
 }
